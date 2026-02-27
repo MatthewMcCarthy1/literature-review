@@ -1,0 +1,59 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{biblatex}
+\usepackage{graphicx}
+\usepackage{cleveref}
+
+\lstset{
+    basicstyle=\small\ttfamily,
+    breaklines=true
+    }
+
+\graphicspath{{images/}}
+
+\addbibresource{references.bib}
+
+\begin{document}
+
+% title
+\title{Explainable AI in Cybersecurity: Interpreting Machine Learning Models for Phishing Detection}
+
+% author name
+\author{Matthew McCarthy}
+
+% The paper headers
+\markboth{Research Methods in Computing \& IT -- Literature Review}%
+{}
+
+% Abstract
+\IEEEtitleabstractindextext{
+    \input{sections/sec_0_abstract}
+}
+
+% make the title area
+\maketitle
+
+% start of sections
+\input{sections/sec_1_introduction}
+\input{sections/sec_2_methodology}
+\input{sections/sec_3_background}
+\input{sections/sec_4_xai_phishing}
+\input{sections/sec_5_discussion}
+\input{sections/sec_6_future}
+\input{sections/sec_7_conclusion}
+% end of sections
+
+% references 
+\printbibliography[]
+
+\end{document}

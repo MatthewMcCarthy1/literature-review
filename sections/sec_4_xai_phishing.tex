@@ -1,0 +1,24 @@
+\section{Applications of XAI in Phishing Detection}
+\label{sec:xai_phishing}
+The systematic selection process yielded a corpus of studies characterizing the current state of explainability in phishing mitigation. While most works focus on established machine learning (ML) classifiers or state-of-the-art transformer architectures, only a subset employ post-hoc frameworks to demystify automated decision-making. The following analysis synthesizes these findings across three thematic dimensions: the technical fidelity of explanations across different model architectures, the specific linguistic and structural features identified as malicious indicators, and the practical utility of XAI visualizations for human intervention.
+
+%------------------------------- SUBSECTION 1 -----------------------------------------%
+\subsection{Performance and Fidelity Across Architectures}
+The reviewed literature reveals a technical divergence in how explainability is applied across varying model complexities, directly addressing RQ1. Traditional machine learning (ML) ensembles, such as Random Forest and XGBoost, remain prevalent due to their high performance and ease of interpretation using post-hoc methods. For instance, \textcite{al-subaiey_novel_2024} and \textcite{pavani_enhancing_2024} demonstrate that LIME and SHAP provide stable local explanations when paired with traditional ML, though they often rely on qualitative visual alignment rather than quantitative fidelity metrics such as deletion/insertion tests. In contrast, research into deep learning (DL) and transformer architectures highlights a critical ``black box'' limitation. While models such as DistilBERT and RoBERTa achieve state-of-the-art accuracies~\cite{melendez_comparative_2024}, their internal operations remain opaque. Authors like \textcite{aldoufani_intelligent_2025} have begun addressing this by integrating LIME to provide token-level explanations for transformers, yet a significant gap persists in measuring the mathematical consistency or ``stability'' of these explanations across diverse datasets.
+
+%------------------------------- SUBSECTION 2 -----------------------------------------%
+\subsection{Thematic Feature Attribution}
+A consensus exists across the corpus regarding the primary indicators of malicious intent, though the focus shifts between URL-based and content-based features. Studies focusing on URL structure consistently identify features such as \texttt{punny\_code}, \texttt{domain\_in\_brand\_list}, and the presence of external hyperlinks as the most influential indicators~\cite{galego_hernandes_phishing_2021}. \textcite{mia_can_2025} further refine this by showing that lexical features like URL length and special character frequency are most influential. Conversely, when analysing email bodies, XAI reveals that models prioritize semantic ``urgency'' tokens such as ``verify,'' ``suspension,'' and ``password''~\cite{al-subaiey_novel_2024}. Notably, \textcite{mia_can_2025} challenge the assumption of feature universality, demonstrating that feature importance can vary significantly across datasets, which underscores the risk of dataset-specific bias in phishing detection models.
+
+%------------------------------- SUBSECTION 3 -----------------------------------------%
+\subsection{Visualization and Human-Centric Utility}
+While technical interpretability is well-documented, practical human-centric utility remains an area of significant controversy, providing critical insights into the practical limitations of current frameworks (RQ2). Many studies utilize bar charts and colour-coded text to present feature importance, assuming these formats reduce the cognitive load for security analysts. Some researchers have moved toward practical deployment, such as \textcite{al-subaiey_novel_2024, aldoufani_intelligent_2025}, who implemented web-based platforms and Chrome extensions to provide real-time explanations. However, a critical methodological flaw identified across the reviewed papers is the near-total absence of empirical user validation. Without human-in-the-loop testing, it remains unproven whether these XAI visualizations actually improve the speed or accuracy of a human analyst's response to phishing threats~\cite{yakandawala_explainable_2024}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\columnwidth]{images/lime.png}
+    \caption{Conceptual XAI pipeline (left) alongside a LIME explanation output (right) for a misclassified phishing email, showing token-level feature importance \cite{al-subaiey_novel_2024}.}
+    \label{fig:lime_small}
+\end{figure}
+
+As illustrated in Figure~\ref{fig:lime_small}, these visualizations aim to bridge the gap between complex model logic and actionable security insights by highlighting high-influence tokens directly within the email body \cite{al-subaiey_novel_2024}.

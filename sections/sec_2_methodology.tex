@@ -1,0 +1,72 @@
+\section{Methodology}
+\label{sec:methodology}
+This literature review employed a systematic multi-stage search strategy across academic databases to identify studies on LIME and SHAP applications in phishing detection. Searches were conducted in November--December 2025, targeting publications from 2020--2025.
+
+%------------------------------- SUBSECTION 1 -----------------------------------------%
+\subsection{Search Strategy}
+An initial scoping search was conducted in Google Scholar using the query "Phishing detection using machine learning and explainable AI" (2020--2025), yielding 17,200 results. Title screening of the first 50 results identified key papers and keywords (LIME, SHAP, XAI) to inform subsequent targeted searches. Google Scholar served as a scoping exercise to establish the research landscape; all papers were subsequently verified through systematic searches in peer-reviewed academic databases.
+
+Based on this scoping exercise, the following targeted database searches were then conducted using refined search strings. IEEE Xplore advanced search queries used can be seen in \Cref{lst:ieee_query} and \Cref{lst:ieee_query_two}.
+
+\begin{lstlisting}[caption={IEEE Xplore advanced search query}, label={lst:ieee_query}]
+("All Metadata":Phishing detection) 
+AND ("All Metadata":machine learning) 
+AND ("All Metadata":LIME) 
+AND ("All Metadata":SHAP) 
+AND ("All Metadata":Explainable AI)
+\end{lstlisting}
+
+\begin{lstlisting}[caption={IEEE Xplore second advanced search query}, label={lst:ieee_query_two}]
+("LIME" OR "SHAP" 
+OR "Explainable AI" OR "XAI") 
+AND ("phishing detection" OR "malicious email" 
+OR "URL classification")
+\end{lstlisting}
+
+Snowballing identified additional relevant papers by examining the reference lists (backward snowballing) and citation records (forward snowballing) of primary studies, which may include papers published in academic databases such as ACM and MDPI.
+
+%------------------------------- SUBSECTION 2 -----------------------------------------%
+\subsection{Screening Process}
+A three-stage screening was applied:
+\begin{enumerate}
+    \item \textbf{Title screening} for keyword presence (phishing detection, machine learning, LIME/SHAP, explainable AI).
+    \item \textbf{Abstract review} for methodological relevance to phishing detection.
+    \item \textbf{Full-text assessment} using keyword searches and manual review to verify LIME/SHAP implementation and experimental results.
+\end{enumerate}
+
+\begin{itemize}
+    \item \textbf{Inclusion:} 
+    Peer-reviewed papers implementing machine learning for phishing detection, including those utilizing LIME and/or SHAP for model interpretability. 
+    
+    \emph{Note:} Original LIME (2016) and SHAP (2017) works are included for methodological foundation.
+    \item \textbf{Exclusion:} 
+    Non-peer-reviewed works such as pre prints from databases like ArXiv, papers published pre-2020, and studies lacking a primary focus on phishing detection.
+\end{itemize}
+
+%------------------------------- SUBSECTION 3 -----------------------------------------%
+\subsection{Final Corpus}
+Following the removal of duplicates and the application of screening criteria, a final corpus of \textbf{14 papers} was selected for detailed review. This selection process followed the PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses) framework to ensure methodological transparency and rigor. Papers identified during the initial Google Scholar scope were re-retrieved via their primary publishers or indexed sources (e.g., IEEE Xplore and ScienceDirect) to ensure metadata accuracy and version control. Consequently, these are accounted for within their respective database totals in Table~\ref{tab:search_results}.
+
+\begin{table}[htbp]
+\centering
+\caption{Systematic Literature Search Results}
+\label{tab:search_results}
+\footnotesize
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\columnwidth}{@{} X c c @{}}
+\toprule
+\textbf{Database/Source} & \textbf{Initial Results} & \textbf{Final Selected} 
+\\ \midrule
+Google Scholar (Scoping) & 17,200 & --\textsuperscript{a}      
+\\
+IEEE Xplore & 16 & 6
+\\
+ScienceDirect & 83 & 3
+\\
+Other Sources (Snowballing) & -- & 5         
+\\ \midrule
+\textbf{Total} & \textbf{17,299} & \textbf{14} \\ \bottomrule
+\multicolumn{3}{l}{\textsuperscript{a}\scriptsize Papers re-verified via primary databases to ensure peer-review status.}
+\end{tabularx}
+\end{table}
+

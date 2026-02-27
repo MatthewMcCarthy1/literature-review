@@ -1,0 +1,33 @@
+\section{Discussion and Critical Analysis}
+\label{sec:discussion}
+
+The systematic review of the selected corpus reveals that while Explainable AI (XAI) significantly enhances the transparency of phishing detection, several critical methodological and practical gaps remain. This section evaluates the trade-offs between model performance and interpretability, the lack of empirical human validation, and the limitations regarding explanation stability. By identifying these discrepancies, this section directly addresses the research gaps outlined in RQ3.
+
+%------------------------------- SUBSECTION 1 -----------------------------------------%
+\subsection{The Stability-Fidelity Gap in Phishing Explanations}
+A significant methodological oversight identified across the corpus is the lack of quantitative metrics for explanation stability and fidelity. Most studies, including those by \textcite{al-subaiey_novel_2024} and \textcite{pavani_enhancing_2024}, rely on qualitative visual alignment to justify the accuracy of LIME and SHAP outputs. However, without formal fidelity scores or deletion/insertion tests, the degree to which an explanation accurately reflects the model's underlying logic remains unverified~\cite{mia_can_2025}. Furthermore, while \textcite{lundberg_unified_2017} emphasizes that SHAP provides unique solutions satisfying local accuracy and consistency, perturbation-based methods such as LIME are known to exhibit stochastic instability~\cite{aldoufani_intelligent_2025} that seems to be underexamined in the literature. In a high-stakes cybersecurity environment, an unstable explanation that produces varying feature importance for the same input could undermine analyst trust and lead to inconsistent incident response.
+
+%------------------------------- SUBSECTION 2 -----------------------------------------%
+\subsection{The Evaluation Crisis: Absence of Human-Centric Validation}
+Despite the stated goal of XAI being ``human understandable,'' there is a pervasive ``human-out-of-the-loop'' trend in current phishing research. Out of the reviewed corpus, only the foundational works by \textcite{ribeiro_why_2016} and \textcite{lundberg_unified_2017} incorporate empirical human subject experiments to validate interpretability. While recent work by \textcite{fan_investigation_2024} successfully applies SHAP to model human susceptibility factors—demonstrating the value of XAI in understanding user behaviour—this human-centric focus has not yet translated to the evaluation of detection tool interfaces. Modern applied studies in phishing detection, such as \textcite{aldoufani_intelligent_2025} and \textcite{shafin_explainable_2025}, present sophisticated visualizations like color-coded tokens and SHAP waterfall plots but do not conduct user studies to measure their actual utility in professional environments.~\cite{galego_hernandes_phishing_2021, pavani_enhancing_2024}. This creates an ``interpretability paradox'' where explanations are technically sound but potentially too complex for real-time human intervention. Without measuring metrics like \textit{time-to-decision} or \textit{cognitive load}, the practical value of these frameworks remains theoretical.
+
+\begin{table}[htbp]
+\centering
+\caption{The Interpretability Paradox in Phishing Detection}
+\label{tab:paradox}
+\footnotesize
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\columnwidth}{@{} l >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X @{}}
+\toprule
+\textbf{Dimension} & \textbf{Technical Success} & \textbf{Practical Limitation} \\ \midrule
+\textbf{Cognitive Load} & High-fidelity feature attribution (e.g., SHAP). & Complex plots may exceed analyst processing capacity in real-time. \\
+\textbf{Trust} & ``Persuasive'' visual highlights (e.g., LIME). & Risk of automation bias; users stop verifying the underlying threat. \\
+\textbf{Decision Accuracy} & High model confidence and precision. & Explanations do not currently guarantee faster or better human decisions. \\ \bottomrule
+\end{tabularx}
+\end{table}
+
+As summarized in~\Cref{tab:paradox}, the gap between algorithmic transparency and human utility suggests that current XAI implementations may inadvertently hinder rather than help a security analyst's performance under pressure.
+
+%------------------------------- SUBSECTION 3 -----------------------------------------%
+\subsection{Dataset Bias and the Generalizability of Explanations}
+The findings of \textcite{mia_can_2025} represent a critical pivot in the literature by demonstrating that feature importance is not universal across datasets. This suggests that XAI may highlight dataset-specific biases or “shortcuts” learned by the model (\textit{Clever Hans effect}) instead of true security indicators. For instance, a model might achieve high accuracy by over-relying on a specific sender domain present in the training set, which would fail in a real-world zero-day scenario. This critique is particularly relevant for high-performing Transformer models like RoBERTa and BERT~\cite{melendez_comparative_2024}, which achieve near-perfect accuracy but offer no inherent mechanism to distinguish between genuine semantic learning and spurious correlations within the training data. Addressing this gap requires a shift toward cross-dataset validation of XAI explanations to ensure their generalizability across diverse phishing landscapes.

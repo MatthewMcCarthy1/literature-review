@@ -1,0 +1,16 @@
+\section{Research Gaps \& Future Directions}
+\label{sec:future}
+
+Based on the critical analysis of the selected corpus, three primary gaps necessitate immediate research attention to transition XAI from a theoretical enhancement to a practical security tool.
+
+%------------------------------- SUBSECTION 1 -----------------------------------------%
+\subsection{Standardization of Fidelity Metrics}
+Current literature predominantly relies on qualitative visual checks to validate explanations, a method deemed insufficient for high-stakes cybersecurity environments. A major gap exists in the use of rigorous, quantitative metrics—such as local fidelity scores, the consistency of feature importance, and deletion/insertion tests on phishing detection models. Future research should establish a standardized ``Phishing XAI Benchmark'' that mandates these mathematical validations before visualizations are presented to analysts. This would prevent the deployment of visually plausible but quantitatively unverified explanations, addressing a critical risk in current phishing XAI research~\cite{mia_can_2025}.
+
+%------------------------------- SUBSECTION 2 -----------------------------------------%
+\subsection{Operational Human-Centric Validation}
+While \textcite{al-subaiey_novel_2024} and \textcite{aldoufani_intelligent_2025} have successfully integrated XAI into web-based detection platforms, the actual impact of these tools on human decision-making remains largely unexplored. Empirical studies are needed to measure \textit{Time-to-Decision} (TTD) and \textit{False Positive Assessment Accuracy} in operational contexts. Future work must move beyond algorithmic performance metrics to determine whether XAI visualizations genuinely improve user understanding or inadvertently contribute to information overload~\cite{yakandawala_explainable_2024}.
+
+%------------------------------- SUBSECTION 3 -----------------------------------------%
+\subsection{Cross-Dataset Generalizability}
+The demonstrated instability of feature importance across datasets, as highlighted by \textcite{mia_can_2025}, exposes a vulnerability in current model training paradigms. XAI is currently utilized primarily for post-hoc justification rather than model debugging. A critical future direction involves using XAI insights during the training phase to identify and penalize dataset-specific artifacts (e.g., specific sender domains) that do not generalize. Developing ``explanation-guided training'' protocols could help align high-performance Transformer models with robust, universal security indicators.

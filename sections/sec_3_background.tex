@@ -1,0 +1,47 @@
+\section{Background \& Related Work}
+\label{sec:background}
+
+Phishing detection has evolved from static rule-based systems to sophisticated machine learning (ML) and deep learning models. While these computational methods have significantly improved detection accuracy, their internal complexity often results in a ``black box'' nature that limits trust and transparency, a critical issue in cybersecurity contexts~\cite{yakandawala_explainable_2024, galego_hernandes_phishing_2021}. This section outlines the evolution of phishing detection methodologies and the subsequent shift toward Explainable AI (XAI) as a necessary solution to the interpretability gap.
+
+%------------------------------- SUBSECTION 1 -----------------------------------------%
+\subsection{The Evolution of Phishing Detection}
+Traditional phishing detection relied heavily on rule-based filters, blacklists, and signature matching~\cite{aldoufani_intelligent_2025, do_deep_2022}. While computationally efficient, these static methods frequently failed against novel zero-day attacks or obfuscation techniques~\cite{yakandawala_explainable_2024}. To address these limitations, classical Machine Learning (ML) models, such as Support Vector Machines (SVM) and Random Forests, were introduced to improve adaptability. However, these approaches typically required extensive manual feature engineering and struggled to detect sophisticated social engineering tactics embedded within email content~\cite{melendez_comparative_2024, do_deep_2022}.
+
+More recently, Deep Learning (DL) architectures, including Convolutional Neural Networks (CNNs) and Recurrent Neural Networks (RNNs), have automated the feature extraction process, with some reported accuracy rates ranging between 92\% and 97\%~\cite{do_deep_2022}. State-of-the-art Transformer-based models, such as BERT and RoBERTa, have further pushed performance boundaries, with some studies reporting accuracies as high as 99.43\%~\cite{melendez_comparative_2024}. Despite these performance gains, the non-linear complexity of DL models obscures their decision-making logic. In cybersecurity, where automated decisions directly impact user safety and data integrity, understanding \textit{why} a model flags a specific email or URL is essential for alert validation, analyst trust, and regulatory compliance~\cite{aldoufani_intelligent_2025}.
+
+%------------------------------- SUBSECTION 2 -----------------------------------------%
+\subsection{Explainable AI (XAI) Frameworks}
+XAI addresses the opacity of complex algorithms by generating human-understandable interpretations of model predictions. Within the cybersecurity domain, XAI techniques are generally categorized along two primary dimensions:
+
+\begin{itemize}
+    \item \textbf{Model-Agnostic vs. Model-Specific:} Model-agnostic methods, such as LIME~\cite{ribeiro_why_2016} and SHAP~\cite{lundberg_unified_2017}, can interpret any classifier regardless of its internal architecture. This flexibility makes them particularly valuable for retrofitting interpretability onto high performing ``black box models'' without altering their underlying structure. Conversely, model-specific methods rely on the intrinsic properties of a specific architecture, such as attention mechanism visualization in transformers.
+    
+    \item \textbf{Local vs. Global Interpretability:} Local explanations clarify the reasoning behind a \textit{single} prediction (e.g., why a specific URL was flagged), which is crucial for security analysts investigating individual alerts~\cite{pavani_enhancing_2024}. Global explanations summarize the model's behaviour across an entire dataset, helping researchers validate that the model relies on legitimate security indicators rather than spurious correlations or bias.
+\end{itemize}
+
+%------------------------------- SUBSECTION 3 -----------------------------------------%
+\subsection{Key Post-Hoc Techniques: LIME and SHAP}
+Two model-agnostic, post-hoc techniques are commonly used in the literature for explaining phishing detection:
+
+\begin{itemize}
+    \item \textbf{LIME (Local Interpretable Model-agnostic Explanations):} 
+    LIME generates explanations by fitting an interpretable surrogate model locally around a specific prediction. For a ``black-box'' model $f$ and an input $x$, LIME seeks a surrogate $g \in G$ that minimizes the objective:
+    \begin{equation}
+    \xi(x) = \operatorname*{argmin}_{g \in G} \; \mathcal{L}(f, g, \pi_x) + \Omega(g),
+    \end{equation}
+    where $\mathcal{L}(f, g, \pi_x)$ measures the fidelity of $g$ in approximating $f$ within the local neighbourhood $\pi_x$ of $x$, and $\Omega(g)$ penalizes the complexity of $g$ to ensure interpretability~\cite{ribeiro_why_2016}. 
+    LIME generates perturbed versions of $x$, obtains the corresponding predictions from $f$, and fits $g$ to these perturbed samples weighted by proximity to $x$. The resulting surrogate identifies the features that most influence the model's prediction locally.
+
+    \item \textbf{SHAP (SHapley Additive exPlanations):} 
+    SHAP provides a theoretically principled approach to feature attribution, grounded in cooperative game theory. For a model $f$ and input $x$, it computes the Shapley value $\phi_i$ for each feature $i$, which represents the average marginal contribution of that feature across all subsets $S \subseteq F \setminus \{i\}$:
+    {\small
+    \begin{equation}
+    \phi_i = \sum_{S \subseteq F \setminus \{i\}} \mkern-5mu \frac{|S|! (|F| - |S| - 1)!}{|F|!} \mkern-5mu [f_{S \cup \{i\}}(x_{S \cup \{i\}}) - f_S(x_S)]
+    \end{equation}
+    }
+    To compute $\phi_i$, SHAP evaluates the model’s output for all combinations of feature subsets and measures the marginal contribution of adding feature $i$. Unlike LIME, SHAP satisfies \textit{local accuracy}, \textit{missingness}, and \textit{consistency}, ensuring a mathematically robust and consistent attribution of feature importance~\cite{lundberg_unified_2017}.
+    
+\end{itemize}
+
+
+These frameworks provide the methodological foundation for the applied studies reviewed in \Cref{sec:xai_phishing}.

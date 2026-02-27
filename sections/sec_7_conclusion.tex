@@ -1,0 +1,10 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+This systematic review evaluated the efficacy and limitations of LIME and SHAP in deciphering black-box phishing detection models. In addressing the defined research questions, the analysis yields three concluding insights.
+
+Regarding \textbf{RQ1 (Effectiveness)}, LIME and SHAP prove highly effective for interpreting traditional ML ensembles, providing clear feature attribution for URL and metadata characteristics. However, their application to Transformer-based architectures remains computationally expensive and susceptible to stability issues, often failing to capture the contextual nuance of deep learning models~\cite{aldoufani_intelligent_2025, al-subaiey_novel_2024}.
+
+Regarding \textbf{RQ2 (Limitations)}, the review identifies a significant ``Human-out-of-the-loop'' paradox. While technical implementations of XAI have advanced, the absence of empirical user validation means that the practical utility of these explanations for security professionals remains theoretical rather than proven~\cite{shafin_explainable_2025}.
+
+Regarding \textbf{RQ3 (Gaps)}, the field is currently hindered by a lack of standardized fidelity metrics and cross-dataset validation. As demonstrated by \textcite{mia_can_2025}, high accuracy does not equate to robust logic. Consequently, the future of phishing detection lies not merely in higher accuracy scores, but in the development of models that are demonstrably faithful, robust across diverse datasets, and empirically validated to enhance human operator performance.

@@ -1,0 +1,26 @@
+\section{Introduction}
+\label{sec:introduction}
+
+Cybersecurity threats have increased substantially in both frequency and sophistication over the past decade, with phishing attacks remaining one of the most prevalent methods for compromising sensitive information. Phishing emails impersonate trusted entities through social engineering techniques that exploit urgency, fear, and authority to trick recipients into revealing credentials or downloading malware. These attacks are increasingly personalized through spear-phishing tactics, making automated detection progressively more challenging~\cite{birthriya_detection_2025}.
+
+To counter this threat, machine learning (ML) has become central to modern phishing detection systems. Traditional approaches based on blacklists and rule-based heuristics proved inadequate against rapidly evolving attack strategies. Modern ML models—ranging from Support Vector Machines to transformer-based architectures like BERT—have demonstrated improved detection performance by analysing email content, metadata, and linguistic patterns~\cite{otieno_application_2023, melendez_comparative_2024}. However, these advances have introduced a critical limitation: most high-performing models operate as ``black boxes,'' providing minimal insight into their decision-making processes. This opacity challenges security professionals who must validate alerts and investigate false positives without understanding model reasoning~\cite{aldoufani_intelligent_2025}.
+
+Explainable Artificial Intelligence (XAI) addresses this limitation by providing human-interpretable explanations for model predictions. Among XAI techniques, Local Interpretable Model-agnostic Explanations (LIME)~\cite{ribeiro_why_2016} and SHapley Additive exPlanations (SHAP)~\cite{lundberg_unified_2017} have gained prominence due to their model-agnostic nature. These methods explain predictions across diverse architectures, from traditional machine learning to deep learning and transformers. This flexibility makes LIME and SHAP particularly valuable for phishing detection interpretability~\cite{pavani_enhancing_2024, al-subaiey_novel_2024}.
+
+
+This literature review systematically examines the application of LIME and SHAP to phishing detection systems. The review makes three key contributions: 
+(1) it analyzes how LIME and SHAP perform across traditional ML, deep learning, and transformer-based detection models; 
+(2) it critically evaluates the practical limitations of these techniques, including computational costs and explanation consistency; and 
+(3) it identifies methodological gaps in current research, particularly regarding explanation quality evaluation and real-world deployment considerations.
+
+To achieve these objectives, this review addresses three research questions:
+
+\begin{enumerate}
+\item \textbf{RQ1:} How effective are LIME and SHAP in providing meaningful explanations for phishing detection across different model architectures?
+
+\item \textbf{RQ2:} What are the practical limitations of LIME and SHAP in cybersecurity contexts?
+
+\item \textbf{RQ3:} What critical research gaps exist in applying explainable AI (XAI) to phishing detection?
+\end{enumerate}
+
+The remainder of this paper is structured as follows. \Cref{sec:methodology} describes the systematic review methodology. \Cref{sec:background} provides background on phishing detection evolution and foundational XAI concepts. \Cref{sec:xai_phishing} examines specific applications of LIME and SHAP to phishing detection. \Cref{sec:discussion} offers critical analysis of current approaches and their limitations. \Cref{sec:future} identifies research gaps and proposes future directions. Finally, \Cref{sec:conclusion} concludes with implications for practice and research.
